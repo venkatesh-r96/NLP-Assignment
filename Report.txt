@@ -1,0 +1,74 @@
+NLP Assignment:
+
+Objective:
+Automatically generate ojbective questions with multiple correct answers based on a given chapter form a subject.
+
+To generate mca questions we need Large Language Moddel to understand the text and generate the questions.
+I tried 3 methods to generate questions.
+
+1.Open AI-gpt-3.5-turbo
+2.Google Palm PAI - text-bison
+3.Google Chat PAI - text-bison
+
+MODEL : In all 3 models given passage is sent to the LLM models with given specific conditiion(mca question answer type).
+        Example:
+	current_question = [{"role": "system", "content": """You are an AI assitant tasked with generating multiple-choice questions (MCQs) by reading the given context. 
+	Each MCQ should have 4 options in which 2 options must be the answer for that question and 2 options are unrelated to the question. 
+	Your goal is to ensure that the incorrect options appear plausible enough to challenge the test-takers' understanding and reasoning abilities. 
+	At the end of each question, please include a tag labeled 'Answers:' followed by the correct answer options for that particular question.
+        Generate the Multiple Choice question as per Given Example format.
+    	Each questions must have two answers.
+    Example:
+    Question 1: Which of the following planets in our solar system have rings?
+    A) Mercury
+    B) Venus
+    C) Saturn
+    D) Mars
+    Correct Answers: C) Saturn and D) Mars
+    Multiple-choice-questions: """ },
+
+Model 1: Open AI-gpt-3.5-turbo
+
+	In open AI token numbers are limited so i approached the content by splitting it to 2 or 3 chunks. 
+	Then run the model . after running the generated questions are listed togeather.
+	Example:
+	Question 1: Who was the last powerful Mughal ruler?
+	A) Bahadur Shah Zafar
+	B) Aurangzeb
+	C) Alivardi Khan
+	D) Sirajuddaulah
+	Answers: B) Aurangzeb and A) Bahadur Shah Zafar
+
+Model 2 :Google Palm PAI - text-bison 
+	
+	Goole palm has 8000 token limit . our content has less then 8000 tokens. so here no need for splitting the content.
+	In this model also i applied same conditions. 
+	Output:
+	Example:
+	1. The East India Company was transformed from a trading company to a territorial colonial power because:',
+ 	'(a) it was able to defeat the Marathas.',
+	 '(b) it was able to defeat the Mughals.',
+ 	'(c) it was able to defeat the Sikhs.',
+	 '(d) all of the above.',
+
+Model 3 :Google Chat PAI - text-bison
+
+	Google Chant PAI is similar to Google Palm PAI. so i follwed the same instructions.
+	output:
+	Example:
+	1. The East India Company was granted a charter by Queen Elizabeth I in:
+    	 * 1600
+   	 * 1651
+   	 * 1757
+    	 * 1765
+
+Conclusion:
+
+All the 3 models the Open ai-GPT-3.5 Turbo model given the best output. 
+
+
+
+
+
+
+
